@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import Search from './components/Search.vue'
+import TransactionList from './components/TransactionList.vue';
+
 </script>
 
 <template>
@@ -12,14 +14,16 @@ import Search from './components/Search.vue'
         <div>
             <Search />
         </div>
-        <div class="container"></div>
+        <div class="container">
+            <TransactionList />
+        </div>
     </main>
 </template>
 <style scoped>
 .header {
     min-height: 4rem;
 
-    padding-inline: 3rem;
+    padding-inline: 1.5rem;
 
     display: flex;
     align-items: center;
@@ -37,6 +41,22 @@ import Search from './components/Search.vue'
 }
 
 .content {
-    padding: 1rem 3rem;
+    max-width: 40rem;
+    margin: 0 auto;
+
+    padding: 1rem 1.5rem;
+}
+
+.container {
+    padding-top: 1rem;
+}
+
+@media only screen and (min-width: 40rem){
+    .header {
+        padding-inline: 3rem;
+    }
+    .content {
+        padding: 1rem 3rem;
+    }
 }
 </style>

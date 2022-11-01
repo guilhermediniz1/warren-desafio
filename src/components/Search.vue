@@ -3,7 +3,7 @@
 
 <template>
     <form class="search" action="">
-        <input class="search__input" type="text" name="search" id="search" placeholder="Pesquisar">
+        <input class="search__input" type="text" name="search" id="search" placeholder="Pesquisar" autocomplete="off">
         <button class="search__submit" type="submit">
             <font-awesome-icon class="fa-lg" icon="fa-solid fa-magnifying-glass" />
         </button>
@@ -24,7 +24,7 @@
     font-weight: 500;
     border: none;
     outline: none;
-    background-color: #d4d4d4;
+    background-color: #ebe8e8;
 }
 
 .search__input:focus {
