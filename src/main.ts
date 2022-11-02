@@ -4,8 +4,8 @@ import App from './App.vue'
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faMagnifyingGlass, faArrowRight } from '@fortawesome/free-solid-svg-icons' 
+import { faMagnifyingGlass, faArrowRight, faCircleXmark } from '@fortawesome/free-solid-svg-icons' 
 
-library.add(faMagnifyingGlass, faArrowRight)
+library.add(faMagnifyingGlass, faArrowRight, faCircleXmark)
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')

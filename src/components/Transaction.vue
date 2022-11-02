@@ -1,11 +1,14 @@
 <script setup lang="ts">
+import { defineEmits, ref } from 'vue';
 
 const props = defineProps(['amount', 'date', 'description', 'from', 'id', 'status', 'title', 'to'])
+const transactionId = ref(props.id)
 
+const emit = defineEmits(['transactionClick'])
 </script>
 
 <template>
-    <article class="transaction">
+    <article @click="emit('transactionClick', transactionId)" class="transaction">
         <div class="transaction__content">
             <div class="transaction__info">
                 <p class="transaction__title">{{ props.title }}</p>
