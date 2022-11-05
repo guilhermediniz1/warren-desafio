@@ -1,28 +1,13 @@
 <script setup lang="ts">
-import { onMounted, reactive, ref } from 'vue';
+import { ref } from 'vue';
 import Transaction from './Transaction.vue';
+import useTransactionStore from '../stores/transactionStore'
 import Modal from './Modal.vue'
 
-interface Transaction {
-    amount: number,
-    date: string,
-    description: string,
-    from: string,
-    id: string,
-    status: string,
-    title: string,
-    to: string
-}
+// Store
+const transactionStore = useTransactionStore()
 
 // Transactions
-let transactions: Transaction[] = reactive([])
-
-onMounted(() => {
-    fetch('https://warren-transactions-api.herokuapp.com/api/transactions')
-        .then(res => res.json())
-        .then(data => data.forEach((el: Transaction) => transactions.push(el)) )
-})
-
 function handleTransactionClick(id: string) {
     toggleModal()
     selectedId.value = id
@@ -40,7 +25,7 @@ const selectedId = ref('')
 <template>
     <div class="container">
         <Transaction
-          v-for="transaction in transactions"
+          v-for="transaction in transactionStore.visibleTransactions"
           :id="transaction.id"
           :amount="transaction.amount"
           :date="transaction.date"

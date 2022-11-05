@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, reactive, onBeforeMount } from 'vue';
-import ProgressBar from './ProgressBar.vue'
 import { onClickOutside } from '@vueuse/core'
 
 interface Transaction {
@@ -62,7 +61,7 @@ onClickOutside(modalRef, () => emit('closeModal'))
             <h2 class="modal__title">{{ modalData.title }}</h2>
             <div class="progress-bar">
                 <div class="progress-bar__bar">
-                    <div class="progress-bar__progress" :style="`width: ${modalData.status === 'created' ? Status.created : modalData.status === 'processing' ? Status.processing : Status.processed};`">
+                    <div class="progress-bar__progress" :style="`width: ${modalData.status === 'processed' ? Status.processed : modalData.status === 'processing' ? Status.processing : Status.created};`">
                         <div class="progress-bar__bullet"></div>
                     </div>
                 </div>

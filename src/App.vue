@@ -1,6 +1,16 @@
 <script setup lang="ts">
+import { onMounted } from 'vue';
 import Search from './components/Search.vue'
 import TransactionList from './components/TransactionList.vue';
+
+import useTransactionStore from './stores/transactionStore';
+
+// Store
+const transactionStore = useTransactionStore()
+
+onMounted(() => {
+    transactionStore.init()
+})
 
 </script>
 
