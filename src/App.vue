@@ -2,6 +2,7 @@
 import { onMounted } from 'vue';
 import Search from './components/Search.vue'
 import TransactionList from './components/TransactionList.vue';
+import Loader from './components/Loader.vue';
 
 import useTransactionStore from './stores/transactionStore';
 
@@ -25,7 +26,8 @@ onMounted(() => {
             <Search />
         </div>
         <div class="container">
-            <TransactionList />
+            <TransactionList v-if="transactionStore.isTransactionLoaded" />
+            <Loader v-else />
         </div>
     </main>
 </template>
@@ -58,7 +60,7 @@ onMounted(() => {
 }
 
 .container {
-    padding-top: 1rem;
+    padding-top: 1.5rem;
 }
 
 @media only screen and (min-width: 40rem){

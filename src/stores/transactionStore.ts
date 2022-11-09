@@ -14,17 +14,21 @@ interface Transaction {
 const useTransactionStore = defineStore('transactionStore', {
     state: () => ({
         visibleTransactions: [] as Transaction[],
-        allTransactions: [] as Transaction[]
+        allTransactions: [] as Transaction[],
+        isTransactionLoaded: false
     }),
     getters: {
 
     },
-    actions: {
+    actions: {        
         init() {
             fetch('https://warren-transactions-api.herokuapp.com/api/transactions')
                 .then(res => res.json())
                 .then(data => data.forEach((el: Transaction) => this.allTransactions.push(el)))
-            this.visibleTransactions = this.allTransactions
+                .finally(() => {
+                    this.visibleTransactions = this.allTransactions
+                    this.isTransactionLoaded = true
+                })
         },
         filterTransactions(str: string, status: string) {
             if(!str && status === "") {

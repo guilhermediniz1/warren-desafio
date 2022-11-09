@@ -36,6 +36,9 @@ const selectedId = ref('')
           :title="transaction.title" 
           @transactionClick="(id) => handleTransactionClick(id)"  
           />
+          <div class="message-container" v-if="!transactionStore.visibleTransactions.length && transactionStore.isTransactionLoaded" >
+              <p class="message">Nenhuma transação foi encontrada.</p>
+          </div>
     </div>
     <Modal v-if="isModalOpen" :id="selectedId" @closeModal="toggleModal()"/>
 </template>
@@ -44,5 +47,14 @@ const selectedId = ref('')
 .container {
     display: grid;
     gap: 1.5rem;
+}
+
+.message-container {
+    width: 100%;
+    padding: 10% .5rem;
+}
+
+.message {
+    opacity: .6;
 }
 </style>
